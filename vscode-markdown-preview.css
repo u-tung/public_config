@@ -1,0 +1,13 @@
+h1, h2 {
+    text-align: center;
+    border: none;
+}
+
+body.vscode-dark {
+    h3, h4, h5, h6 {
+        padding-bottom: 0.5em;
+        border-bottom: solid rgb(180, 180, 180) 1px !important;
+    }
+
+    color: rgb(220, 220, 220);
+}
