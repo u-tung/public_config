@@ -11,3 +11,14 @@ body.vscode-dark {
 
     color: rgb(220, 220, 220);
 }
+
+li {
+    padding: 6px 0px;
+}
+
+code {
+    color: #FD3235;
+    background-color: #21252b;
+    border: solid #393939 1px;
+    padding: 0px 4px;
+}
