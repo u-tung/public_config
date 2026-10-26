@@ -1,24 +1,226 @@
-h1, h2 {
-    text-align: center;
-    border: none;
+/* 讓 Markdown Preview 的外觀對齊 Markdown Editor (.md-theme-vscode-default)
+ * 數值取自 markdown-editor-out/editor.css */
+
+.vscode-body.vscode-body.vscode-body.vscode-body {
+	--md-separator-color: color-mix(in srgb, var(--vscode-textSeparator-foreground, #d1d9e0) 60%, transparent);
+	--md-inline-code-background: color-mix(in srgb, var(--vscode-textPreformat-background, #818b981f) 60%, transparent);
+
+	font-family: var(--markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", system-ui, "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--markdown-font-size, 14px);
+	line-height: var(--markdown-line-height, 1.572);
+	color: var(--vscode-editor-foreground, #1f2328);
+	word-wrap: break-word;
+	/* padding-top: 32px; */
+	padding-top: 4px;
+	/* padding-inline: max(8px, 48px); */
+	padding-inline: 0px;
+
+	max-width: 900px;
+	margin-inline: auto;
 }
 
-body.vscode-dark {
-    h3, h4, h5, h6 {
-        padding-bottom: 0.5em;
-        border-bottom: solid rgb(180, 180, 180) 1px !important;
-    }
+/* Headings */
+.vscode-body.vscode-body.vscode-body.vscode-body h1, .vscode-body.vscode-body.vscode-body.vscode-body h2, .vscode-body.vscode-body.vscode-body.vscode-body h3,
+.vscode-body.vscode-body.vscode-body.vscode-body h4, .vscode-body.vscode-body.vscode-body.vscode-body h5, .vscode-body.vscode-body.vscode-body.vscode-body h6 {
+	margin-top: 24px;
+	margin-bottom: 16px;
+	font-weight: 600;
+	line-height: 1.25;
+}
+.vscode-body.vscode-body.vscode-body.vscode-body > :first-child { margin-top: 0; }
+.vscode-body.vscode-body.vscode-body.vscode-body h1 { font-size: 1.75em; padding-bottom: .3em; border-bottom: 1px solid var(--md-separator-color); }
+.vscode-body.vscode-body.vscode-body.vscode-body h2 { font-size: 1.4em;  padding-bottom: .3em; border-bottom: 1px solid var(--md-separator-color); }
+.vscode-body.vscode-body.vscode-body.vscode-body h3 { font-size: 1.2em; }
+.vscode-body.vscode-body.vscode-body.vscode-body h4 { font-size: 1em; }
+.vscode-body.vscode-body.vscode-body.vscode-body h5 { font-size: .875em; }
+.vscode-body.vscode-body.vscode-body.vscode-body h6 { font-size: .85em; }
 
-    color: rgb(220, 220, 220);
+/* Paragraph / list */
+.vscode-body.vscode-body.vscode-body.vscode-body p { margin-top: 0; margin-bottom: 16px; }
+.vscode-body.vscode-body.vscode-body.vscode-body ul, .vscode-body.vscode-body.vscode-body.vscode-body ol { margin-top: 0; margin-bottom: 16px; padding-left: 2em; }
+.vscode-body.vscode-body.vscode-body.vscode-body li > p { margin-bottom: 0; }
+
+/* Blockquote */
+.vscode-body.vscode-body.vscode-body.vscode-body blockquote {
+	margin: 0 0 16px;
+	padding: 0 16px 0 12px;
+	background-color: var(--vscode-textBlockQuote-background, transparent);
+	border: 0;
+	border-left: 5px solid var(--vscode-textBlockQuote-border, #d1d9e0);
+	border-radius: 2px;
 }
 
-li {
-    padding: 6px 0px;
+/* Horizontal rule */
+.vscode-body.vscode-body.vscode-body.vscode-body hr {
+	height: 0;
+	padding: 0;
+	margin: 24px 0;
+	border: 0;
+	border-bottom: 1px solid var(--md-separator-color);
 }
 
-code {
-    color: #FD3235;
-    background-color: #21252b;
-    border: solid #393939 1px;
-    padding: 0px 4px;
+/* Links / strong */
+.vscode-body.vscode-body.vscode-body.vscode-body a { color: var(--vscode-textLink-foreground, #0969da); text-decoration: none; }
+.vscode-body.vscode-body.vscode-body.vscode-body a:hover { text-decoration: underline; }
+.vscode-body.vscode-body.vscode-body.vscode-body strong { font-weight: 600; }
+
+/* Inline code */
+.vscode-body.vscode-body.vscode-body.vscode-body :not(pre) > code {
+	font-family: var(--vscode-editor-font-family, ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace);
+	font-size: 1em;
+	line-height: 1.357em;
+	padding: 1px 3px;
+	margin: 0;
+	color: var(--vscode-textPreformat-foreground, inherit);
+	background-color: var(--md-inline-code-background);
+	border-radius: 4px;
+	white-space: break-spaces;
 }
+
+/* Code block */
+.vscode-body.vscode-body.vscode-body.vscode-body pre {
+	margin: 0 0 16px;
+	padding: 6px 10px;
+	line-height: 1.357;
+	background-color: var(--vscode-textCodeBlock-background, #f6f8fa);
+	border: 1px solid var(--vscode-widget-border, #d1d9e0);
+	border-radius: 3px;
+}
+.vscode-body.vscode-body.vscode-body.vscode-body pre code {
+	font-family: var(--vscode-editor-font-family, ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace);
+	padding: 0;
+	background-color: transparent;
+	border-radius: 0;
+}
+
+/* Table
+ * 選擇器刻意寫得比 media/markdown.css 的 th / td / tr + tr > td 更具體,才能蓋過它。 */
+.vscode-body.vscode-body.vscode-body.vscode-body table { border-collapse: collapse; width: auto; margin-top: 0; margin-bottom: 16px; }
+.vscode-body.vscode-body.vscode-body.vscode-body table :is(th, td) {
+	padding: 5px 10px;
+	border: 1px solid var(--vscode-editorWidget-border, #d1d9e0);
+	text-align: left;
+}
+.vscode-body.vscode-body.vscode-body.vscode-body table > tbody > tr + tr > td { border-top: 1px solid var(--vscode-editorWidget-border, #d1d9e0); }
+.vscode-body.vscode-body.vscode-body.vscode-body table > thead > tr > th {
+	font-weight: 600;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background: transparent;
+}
+
+/* ---------- 語法高亮 (One Dark Pro) ----------
+ * 顏色取自 zhuangtongfa.material-theme 的 OneDark-Pro.json。
+ * 指定 .vscode-body.vscode-body.vscode-body.vscode-body 前綴以蓋過 media/highlight.css。
+ */
+.vscode-body.vscode-body.vscode-body.vscode-body .hljs { color: var(--vscode-textPreformat-foreground, inherit); background: transparent; }
+.vscode-body.vscode-body.vscode-body.vscode-body .hljs-keyword,
+.vscode-body.vscode-body.vscode-body.vscode-body .hljs-selector-tag,
+.vscode-body.vscode-body.vscode-body.vscode-body .hljs-meta,
+.vscode-body.vscode-body.vscode-body.vscode-body .hljs-meta-keyword,
+.vscode-body.vscode-body.vscode-body.vscode-body .hljs-doctag         { color: #d55fde; }
+.vscode-body.vscode-body.vscode-body.vscode-body .hljs-string,
+.vscode-body.vscode-body.vscode-body.vscode-body .hljs-meta-string,
+.vscode-body.vscode-body.vscode-body.vscode-body .hljs-addition       { color: #89ca78; }
+.vscode-body.vscode-body.vscode-body.vscode-body .hljs-number,
+.vscode-body.vscode-body.vscode-body.vscode-body .hljs-literal,
+.vscode-body.vscode-body.vscode-body.vscode-body .hljs-attr,
+.vscode-body.vscode-body.vscode-body.vscode-body .hljs-attribute,
+.vscode-body.vscode-body.vscode-body.vscode-body .hljs-bullet,
+.vscode-body.vscode-body.vscode-body.vscode-body .hljs-selector-class,
+.vscode-body.vscode-body.vscode-body.vscode-body .hljs-selector-attr,
+.vscode-body.vscode-body.vscode-body.vscode-body .hljs-selector-pseudo { color: #d19a66; }
+.vscode-body.vscode-body.vscode-body.vscode-body .hljs-comment,
+.vscode-body.vscode-body.vscode-body.vscode-body .hljs-quote          { color: #7f848e; font-style: italic; }
+.vscode-body.vscode-body.vscode-body.vscode-body .hljs-title,
+.vscode-body.vscode-body.vscode-body.vscode-body .hljs-function,
+.vscode-body.vscode-body.vscode-body.vscode-body .hljs-title.function_,
+.vscode-body.vscode-body.vscode-body.vscode-body .hljs-selector-id,
+.vscode-body.vscode-body.vscode-body.vscode-body .hljs-section        { color: #61afef; }
+.vscode-body.vscode-body.vscode-body.vscode-body .hljs-type,
+.vscode-body.vscode-body.vscode-body.vscode-body .hljs-built_in,
+.vscode-body.vscode-body.vscode-body.vscode-body .hljs-class,
+.vscode-body.vscode-body.vscode-body.vscode-body .hljs-title.class_,
+.vscode-body.vscode-body.vscode-body.vscode-body .hljs-builtin-name   { color: #e5c07b; }
+.vscode-body.vscode-body.vscode-body.vscode-body .hljs-variable,
+.vscode-body.vscode-body.vscode-body.vscode-body .hljs-template-variable,
+.vscode-body.vscode-body.vscode-body.vscode-body .hljs-name,
+.vscode-body.vscode-body.vscode-body.vscode-body .hljs-tag,
+.vscode-body.vscode-body.vscode-body.vscode-body .hljs-symbol,
+.vscode-body.vscode-body.vscode-body.vscode-body .hljs-regexp,
+.vscode-body.vscode-body.vscode-body.vscode-body .hljs-deletion,
+.vscode-body.vscode-body.vscode-body.vscode-body .hljs-subst          { color: #ef596f; }
+.vscode-body.vscode-body.vscode-body.vscode-body .hljs-params         { color: inherit; font-style: italic; }
+.vscode-body.vscode-body.vscode-body.vscode-body .hljs-operator,
+.vscode-body.vscode-body.vscode-body.vscode-body .hljs-template-tag   { color: #2bbac5; }
+.vscode-body.vscode-body.vscode-body.vscode-body .hljs-link           { color: #61afef; text-decoration: underline; }
+.vscode-body.vscode-body.vscode-body.vscode-body .hljs-emphasis       { font-style: italic; }
+.vscode-body.vscode-body.vscode-body.vscode-body .hljs-strong         { font-weight: bold; }
+.vscode-body.vscode-body.vscode-body.vscode-body .hljs-addition,
+.vscode-body.vscode-body.vscode-body.vscode-body .hljs-deletion       { background: transparent; display: inline; width: auto; }
+
+/* ---------- 蓋過 One Dark Pro 擴充套件注入的 preview 樣式 ----------
+ * 該擴充套件 (styles/markdown-inside.css 等) 用
+ *   .vscode-dark[data-vscode-theme-name="One Dark Pro ..."].vscode-body xxx
+ * 的高優先權選擇器套 GitHub 風格。上面所有規則已把 .vscode-body 重複 4 次
+ * 把優先權拉高到 (0,4,0) 以上;以下補上它額外設定、但上面沒覆寫到的屬性。
+ */
+.vscode-body.vscode-body.vscode-body.vscode-body h1,
+.vscode-body.vscode-body.vscode-body.vscode-body h2,
+.vscode-body.vscode-body.vscode-body.vscode-body h3,
+.vscode-body.vscode-body.vscode-body.vscode-body h4,
+.vscode-body.vscode-body.vscode-body.vscode-body h5,
+.vscode-body.vscode-body.vscode-body.vscode-body h6 { color: inherit; }
+.vscode-body.vscode-body.vscode-body.vscode-body h1,
+.vscode-body.vscode-body.vscode-body.vscode-body h2 { border-bottom: 1px solid var(--md-separator-color); }
+
+.vscode-body.vscode-body.vscode-body.vscode-body li > p { margin-top: 0; }
+.vscode-body.vscode-body.vscode-body.vscode-body li + li { margin-top: 0; }
+.vscode-body.vscode-body.vscode-body.vscode-body li { word-wrap: break-word; }
+.vscode-body.vscode-body.vscode-body.vscode-body blockquote { color: inherit; border-width: 0; border-left-width: 5px; }
+.vscode-body.vscode-body.vscode-body.vscode-body blockquote > :last-child { margin-bottom: 16px; }
+.vscode-body.vscode-body.vscode-body.vscode-body hr { background: transparent; }
+
+/* 表格:擴充套件設了 display:block; width:100% 與 th 的 !important 邊框 */
+.vscode-body.vscode-body.vscode-body.vscode-body table { display: block; width: fit-content; max-width: 100%; overflow-x: auto; }
+.vscode-body.vscode-body.vscode-body.vscode-body table th {
+	border: 1px solid var(--vscode-editorWidget-border, #d1d9e0) !important;
+	font-weight: 600;
+	padding: 10px 10px 10px;
+}
+.vscode-body.vscode-body.vscode-body.vscode-body table td {
+	border: 1px solid var(--vscode-editorWidget-border, #d1d9e0) !important;
+	padding: 5px 10px;
+}
+
+/* 程式碼:擴充套件把 code 設成白字 + #3a3f4b 背景,hljs 設成 block + padding + #282c34 */
+.vscode-body.vscode-body.vscode-body.vscode-body pre > code,
+.vscode-body.vscode-body.vscode-body.vscode-body pre code.hljs {
+	display: block;
+	/* padding 放在負責捲動的 code 上 (同 Editor 的 .md-code-block),捲軸才會貼在區塊底部邊緣。
+	 * Editor 的 ```lang / ``` 是 visibility:hidden 的 inline marker,上下各佔一行 (1.357em) */
+	padding: calc(10px + 1.357em) 10px;
+	margin: 0;
+	color: inherit;
+	background: transparent;
+	overflow-x: auto;
+}
+
+/* 捲動改由 code 負責,pre 本身不捲動,
+ * 這樣 pre 裡 position:absolute 的 .code-block-copy-button 才不會跟著內容一起捲走 */
+.vscode-body.vscode-body.vscode-body.vscode-body pre {
+	position: relative;
+	overflow: hidden;
+	padding: 0;
+}
+/* 擴充套件設了 pre { color: initial }(黑字);預設文字色與 inline code 相同 */
+.vscode-body.vscode-body.vscode-body.vscode-body pre { color: var(--vscode-textPreformat-foreground, inherit); }
+
+.vscode-body.vscode-body.vscode-body.vscode-body pre > code, .vscode-body.vscode-body.vscode-body.vscode-body pre code.hljs {
+	color: #A4AABA;
+}
+
+.vscode-body.vscode-body.vscode-body.vscode-body .hljs-property   { color: #ef596f; }
+.vscode-body.vscode-body.vscode-body.vscode-body .hljs-attr   { color: #ef596f; }
+.vscode-body.vscode-body.vscode-body.vscode-body .hljs-function   { color: #D65FDE; }
+.vscode-body.vscode-body.vscode-body.vscode-body { font-weight: 500; }
